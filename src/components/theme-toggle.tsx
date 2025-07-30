@@ -68,6 +68,27 @@ const daisyPalettes = [
     { name: "Winter", key: "daisy-winter", color: "hsl(207 90% 54%)" },
 ];
 
+const primaryColorPalettes = [
+  { name: "Red", key: "primary-red", color: "hsl(0 84% 60%)" },
+  { name: "Orange", key: "primary-orange", color: "hsl(24 95% 53%)" },
+  { name: "Amber", key: "primary-amber", color: "hsl(45 95% 51%)" },
+  { name: "Yellow", key: "primary-yellow", color: "hsl(53 98% 50%)" },
+  { name: "Lime", key: "primary-lime", color: "hsl(90 84% 48%)" },
+  { name: "Green", key: "primary-green", color: "hsl(142 71% 45%)" },
+  { name: "Emerald", key: "primary-emerald", color: "hsl(162 81% 41%)" },
+  { name: "Teal", key: "primary-teal", color: "hsl(171 91% 39%)" },
+  { name: "Cyan", key: "primary-cyan", color: "hsl(188 96% 43%)" },
+  { name: "Sky", key: "primary-sky", color: "hsl(199 98% 53%)" },
+  { name: "Blue", key: "primary-blue", color: "hsl(221 83% 53%)" },
+  { name: "Indigo", key: "primary-indigo", color: "hsl(244 76% 51%)" },
+  { name: "Violet", key: "primary-violet", color: "hsl(262 84% 59%)" },
+  { name: "Purple", key: "primary-purple", color: "hsl(289 83% 59%)" },
+  { name: "Fuchsia", key: "primary-fuchsia", color: "hsl(326 89% 55%)" },
+  { name: "Pink", key: "primary-pink", color: "hsl(341 95% 58%)" },
+  { name: "Rose", key: "primary-rose", color: "hsl(347 89% 61%)" },
+];
+
+
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const { palette, setPalette } = usePalette();
@@ -158,6 +179,30 @@ export function ThemeToggle() {
             <DropdownMenuSubContent>
               <div className="max-h-60 overflow-y-auto">
                 {daisyPalettes.map((p) => (
+                  <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-4 h-4 rounded-full border"
+                        style={{ backgroundColor: p.color }}
+                      />
+                      <span>{p.name}</span>
+                    </div>
+                    {palette === p.key && <Check className="ml-auto h-4 w-4" />}
+                  </DropdownMenuItem>
+                ))}
+              </div>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
+         <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
+            <Palette className="mr-2 h-4 w-4" />
+            <span>Primary Colors</span>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <div className="max-h-60 overflow-y-auto">
+                {primaryColorPalettes.map((p) => (
                   <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
                     <div className="flex items-center gap-2">
                       <div
