@@ -26,24 +26,31 @@ const THEMES = [
 ];
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+  const [isDarkMode, setIsDarkMode] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
+    const savedMode = localStorage.getItem("dark-mode")
+    const darkMode = savedMode === "true";
+    setIsDarkMode(darkMode)
+    if (darkMode) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
   }, [])
   
   const toggleDarkMode = () => {
-    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
-    // We update the class on html element to toggle dark mode
-    // And store the preference in local storage.
-    // The theme provider will pick this up on next load.
-    if(newTheme === 'dark'){
+    const newMode = !isDarkMode
+    setIsDarkMode(newMode)
+    localStorage.setItem("dark-mode", String(newMode))
+    if(newMode){
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
-    localStorage.setItem('theme', newTheme);
   };
 
   const currentPalette = THEMES.find(t => t.name === theme) ?? THEMES[0];
@@ -69,7 +76,7 @@ export function ThemeToggle() {
            <DropdownMenuLabel className="p-0">Light / Dark</DropdownMenuLabel>
           <Switch
             id="dark-mode-toggle"
-            checked={resolvedTheme === 'dark'}
+            checked={isDarkMode}
             onCheckedChange={toggleDarkMode}
             aria-label="Toggle light and dark mode"
           />
