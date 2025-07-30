@@ -108,7 +108,7 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuItem onClick={toggleDarkMode}>
+        <DropdownMenuItem onClick={(e) => e.preventDefault()}>
           <div className="flex items-center w-full cursor-pointer">
             {isDarkMode ? <Sun className="mr-2 h-4 w-4"/> : <Moon className="mr-2 h-4 w-4"/>}
             <span>{isDarkMode ? 'Light' : 'Dark'} Mode</span>
