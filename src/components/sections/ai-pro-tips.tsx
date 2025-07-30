@@ -43,7 +43,7 @@ export default function AiProTips() {
                 Generating...
               </>
             ) : (
-              'Get a Pro Tip'
+              'Get A TEST Pro Tip'
             )}
           </Button>
           
