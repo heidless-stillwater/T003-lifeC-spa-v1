@@ -28,6 +28,7 @@ const palettes = [
   { name: "Sky Blue", key: "custom-theme-5", color: "hsl(197 71% 73%)" },
   { name: "Cyberpunk", key: "custom-theme-6", color: "hsl(330 100% 50%)" },
   { name: "Strong Blue", key: "custom-theme-7", color: "hsl(211 78% 46%)" },
+  { name: "Violet Kiss", key: "custom-theme-8", color: "hsl(271 76% 53%)" },
 ];
 
 export function ThemeToggle() {
