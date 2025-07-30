@@ -13,12 +13,12 @@ body {
 @layer base {
   :root,
   html[data-palette='custom-theme-0'] {
-    --background: 210 20% 98%;
-    --foreground: 224 71% 4%;
+    --background: 220 14% 96%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
+    --popover-foreground: 222 47% 11%;
     --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
     --secondary: 220 9% 46%;
@@ -32,7 +32,6 @@ body {
     --border: 215 20% 90%;
     --input: 215 28% 93%;
     --ring: 222 84% 50%;
-    --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -68,17 +67,17 @@ body {
   }
 
   html[data-palette='custom-theme-1'] {
-    --background: 60 8% 97%;
+    --background: 60 8% 96%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 215 25% 27%;
+    --primary: 222 25% 27%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 32 6% 51%;
+    --secondary: 32 6% 45%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 32 6% 51%;
+    --muted: 32 6% 45%;
     --muted-foreground: 222 47% 11%;
     --accent: 38 92% 50%;
     --accent-foreground: 222 47% 11%;
@@ -86,29 +85,29 @@ body {
     --destructive-foreground: 0 0% 100%;
     --border: 35 11% 83%;
     --input: 30 20% 92%;
-    --ring: 215 25% 27%;
+    --ring: 222 25% 27%;
   }
 
   .dark[data-palette='custom-theme-1'] {
     --background: 222 47% 11%;
-    --foreground: 60 8% 97%;
-    --card: 222 47% 11%;
-    --card-foreground: 60 8% 97%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 60 8% 97%;
-    --primary: 215 25% 27%;
-    --primary-foreground: 60 8% 97%;
+    --foreground: 60 8% 96%;
+    --card: 222 22% 16%;
+    --card-foreground: 60 8% 96%;
+    --popover: 222 22% 16%;
+    --popover-foreground: 60 8% 96%;
+    --primary: 222 25% 27%;
+    --primary-foreground: 60 8% 96%;
     --secondary: 32 6% 31%;
-    --secondary-foreground: 60 8% 97%;
+    --secondary-foreground: 60 8% 96%;
     --muted: 32 6% 31%;
     --muted-foreground: 60 8% 90%;
     --accent: 38 92% 50%;
     --accent-foreground: 222 47% 11%;
     --destructive: 347 77% 49%;
-    --destructive-foreground: 60 8% 97%;
+    --destructive-foreground: 60 8% 96%;
     --border: 32 6% 21%;
     --input: 32 6% 21%;
-    --ring: 215 25% 27%;
+    --ring: 222 25% 27%;
   }
 
   html[data-palette='custom-theme-2'] {
@@ -473,3 +472,5 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+    
