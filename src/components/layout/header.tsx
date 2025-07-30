@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { HeartHandshake, Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -38,7 +37,6 @@ export default function Header() {
           <Button asChild>
             <Link href="#contact">Start Here</Link>
           </Button>
-          <ThemeToggle />
         </div>
         
         <div className="md:hidden">
@@ -73,9 +71,6 @@ export default function Header() {
                   ))}
                 </nav>
                  <div className="p-4 border-t">
-                    <div className="pb-4">
-                     <ThemeToggle />
-                    </div>
                     <Button asChild className="w-full">
                       <Link href="#contact">Start Here</Link>
                     </Button>
