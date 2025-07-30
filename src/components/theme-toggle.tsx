@@ -20,7 +20,7 @@ import {
 import { Switch } from "@/components/ui/switch"
 
 const THEMES = [
-  { name: "custom-theme-0", label: "Default", color: "hsl(205 82% 51%)" },
+  { name: "custom-theme-0", label: "Default", color: "hsl(206 85% 55%)" },
   { name: "custom-theme-1", label: "Violet", color: "hsl(251 79% 66%)" },
   { name: "custom-theme-2", label: "Coral", color: "hsl(16 100% 66%)" },
 ];
@@ -33,12 +33,6 @@ export function ThemeToggle() {
     setMounted(true)
   }, [])
 
-  const isDarkMode = resolvedTheme === 'dark';
-
-  const toggleDarkMode = () => {
-    setTheme(isDarkMode ? 'light' : 'dark')
-  };
-  
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
@@ -46,6 +40,14 @@ export function ThemeToggle() {
       </Button>
     )
   }
+
+  const isDarkMode = resolvedTheme === 'dark';
+
+  const toggleDarkMode = () => {
+    setTheme(isDarkMode ? 'light' : 'dark')
+  };
+
+  const currentPalette = THEMES.find(t => t.name === theme)?.name || 'system';
 
   return (
     <DropdownMenu>
@@ -87,7 +89,7 @@ export function ThemeToggle() {
                       />
                       <span>{p.label}</span>
                     </div>
-                    {theme === p.name && <Check className="ml-auto h-4 w-4" />}
+                    {currentPalette === p.name && <Check className="ml-auto h-4 w-4" />}
                   </DropdownMenuItem>
                 ))}
             </DropdownMenuSubContent>
@@ -97,7 +99,7 @@ export function ThemeToggle() {
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="mr-2 h-4 w-4" />
           <span>System</span>
-           {theme === 'system' && <Check className="ml-auto h-4 w-4" />}
+           {currentPalette === 'system' && <Check className="ml-auto h-4 w-4" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
