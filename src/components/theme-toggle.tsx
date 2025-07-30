@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun, Palette, Check } from "lucide-react"
+import { Moon, Sun, Palette, Check, SwatchBook, Pipette } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
@@ -14,14 +14,18 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuPortal,
   DropdownMenuSubContent,
-  DropdownMenuSeparator
+  DropdownMenuSeparator,
+  DropdownMenuLabel
 } from "@/components/ui/dropdown-menu"
 import { Switch } from "@/components/ui/switch"
 import { usePalette } from "./palette-provider"
 
-const palettes = [
+const designerPalettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(221 83% 53%)" },
   { name: "Slate & Amber", key: "custom-theme-1", color: "hsl(215 25% 27%)" },
+];
+
+const bespokePalettes = [
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
   { name: "Vibrant Red", key: "custom-theme-3", color: "hsl(0 100% 71%)" },
   { name: "Cool Slate", key: "custom-theme-4", color: "hsl(251 81% 67%)" },
@@ -50,29 +54,58 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <div className="flex items-center justify-between px-2 py-1.5">
-          <span className="text-sm font-medium">Dark Mode</span>
-          <Switch
-            checked={isDarkMode}
-            onCheckedChange={toggleDarkMode}
-            aria-label="Toggle dark mode"
-          />
-        </div>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuItem onClick={toggleDarkMode}>
+          <div className="flex items-center w-full cursor-pointer">
+            {isDarkMode ? <Sun className="mr-2 h-4 w-4"/> : <Moon className="mr-2 h-4 w-4"/>}
+            <span>{isDarkMode ? 'Light' : 'Dark'} Mode</span>
+            <div className="flex-grow"></div>
+            <Switch
+              checked={isDarkMode}
+              onCheckedChange={toggleDarkMode}
+              aria-label="Toggle dark mode"
+              className="ml-auto"
+            />
+          </div>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <Palette className="mr-2 h-4 w-4" />
+            <SwatchBook className="mr-2 h-4 w-4" />
             <span>Bespoke</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
                <div className="max-h-60 overflow-y-auto">
-                {palettes.map((p) => (
+                {bespokePalettes.map((p) => (
                   <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
                     <div className="flex items-center gap-2">
                        <div
-                        className="w-4 h-4 rounded-full"
+                        className="w-4 h-4 rounded-full border"
+                        style={{ backgroundColor: p.color }}
+                      />
+                      <span>{p.name}</span>
+                    </div>
+                    {palette === p.key && <Check className="ml-auto h-4 w-4" />}
+                  </DropdownMenuItem>
+                ))}
+              </div>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
+         <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
+            <Pipette className="mr-2 h-4 w-4" />
+            <span>Designer</span>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+               <div className="max-h-60 overflow-y-auto">
+                {designerPalettes.map((p) => (
+                  <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
+                    <div className="flex items-center gap-2">
+                       <div
+                        className="w-4 h-4 rounded-full border"
                         style={{ backgroundColor: p.color }}
                       />
                       <span>{p.name}</span>
