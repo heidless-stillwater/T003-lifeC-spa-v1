@@ -31,6 +31,10 @@ export function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
+    const currentTheme = document.documentElement.dataset.theme;
+    if (!THEMES.some(t => t.name === currentTheme)) {
+        document.documentElement.dataset.theme = "custom-theme-0";
+    }
   }, [])
 
   if (!mounted) {
@@ -46,8 +50,12 @@ export function ThemeToggle() {
   const toggleDarkMode = () => {
     setTheme(isDarkMode ? 'light' : 'dark')
   };
+
+  const handleThemeChange = (newTheme: string) => {
+    document.documentElement.dataset.theme = newTheme;
+  }
   
-  const currentPalette = THEMES.find(t => t.name === theme)?.name || 'system';
+  const currentPalette = typeof window !== 'undefined' ? document.documentElement.dataset.theme : 'custom-theme-0';
 
   return (
     <DropdownMenu>
@@ -80,7 +88,7 @@ export function ThemeToggle() {
                 {THEMES.map((p) => (
                   <DropdownMenuItem
                     key={p.name}
-                    onClick={() => setTheme(p.name)}
+                    onClick={() => handleThemeChange(p.name)}
                   >
                     <div className="flex items-center gap-2">
                        <div
@@ -99,7 +107,7 @@ export function ThemeToggle() {
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="mr-2 h-4 w-4" />
           <span>System</span>
-           {theme === 'system' && <Check className="ml-auto h-4 w-4" />}
+           {theme === 'system' && !THEMES.some(t => t.name === theme) && <Check className="ml-auto h-4 w-4" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
