@@ -42,7 +42,6 @@ export default function Header() {
         </div>
         
         <div className="md:hidden flex items-center gap-2">
-           <ThemeToggle />
            <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -73,14 +72,17 @@ export default function Header() {
                     </SheetClose>
                   ))}
                 </nav>
-                 <div className="p-4 border-t">
+                 <div className="p-4 border-t space-y-4">
                     <Button asChild className="w-full">
                       <Link href="#contact">Start Here</Link>
                     </Button>
-                    <a href="tel:+1234567890" className="flex items-center justify-center gap-2 text-sm mt-4 font-medium text-muted-foreground transition-colors hover:text-foreground">
-                        <Phone className="h-4 w-4" />
-                        (123) 456-7890
-                    </a>
+                    <div className="flex items-center justify-between">
+                       <a href="tel:+1234567890" className="flex items-center justify-center gap-2 text-sm mt-4 font-medium text-muted-foreground transition-colors hover:text-foreground">
+                          <Phone className="h-4 w-4" />
+                          (123) 456-7890
+                      </a>
+                      <ThemeToggle />
+                    </div>
                 </div>
               </div>
             </SheetContent>
@@ -90,5 +92,3 @@ export default function Header() {
     </header>
   );
 }
-
-    
