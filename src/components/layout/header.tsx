@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { HeartHandshake, Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -14,8 +14,6 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -40,10 +38,11 @@ export default function Header() {
           <Button asChild>
             <Link href="#contact">Start Here</Link>
           </Button>
+          <ThemeToggle />
         </div>
         
         <div className="md:hidden">
-           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -53,7 +52,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[240px]">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between p-4 border-b">
-                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                   <Link href="/" className="flex items-center gap-2">
                       <HeartHandshake className="h-6 w-6 text-accent" />
                       <span className="font-headline text-lg font-bold">Best Day</span>
                     </Link>
@@ -67,15 +66,18 @@ export default function Header() {
                 <nav className="flex-1 flex flex-col gap-4 p-4">
                   {navLinks.map((link) => (
                     <SheetClose key={link.href} asChild>
-                      <Link href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>
+                      <Link href={link.href} className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground">
                         {link.label}
                       </Link>
                     </SheetClose>
                   ))}
                 </nav>
                  <div className="p-4 border-t">
+                    <div className="pb-4">
+                     <ThemeToggle />
+                    </div>
                     <Button asChild className="w-full">
-                      <Link href="#contact" onClick={() => setIsMenuOpen(false)}>Start Here</Link>
+                      <Link href="#contact">Start Here</Link>
                     </Button>
                     <a href="tel:+1234567890" className="flex items-center justify-center gap-2 text-sm mt-4 font-medium text-muted-foreground transition-colors hover:text-foreground">
                         <Phone className="h-4 w-4" />

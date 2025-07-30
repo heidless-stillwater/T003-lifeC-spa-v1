@@ -11,7 +11,7 @@ body {
 }
 
 @layer base {
-  :root {
+  [data-theme="custom-theme-0"] {
     --background: 210 29% 96%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
@@ -38,7 +38,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   }
-  .dark {
+
+  .dark [data-theme="custom-theme-0"] {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
     --card: 222 47% 11%;
