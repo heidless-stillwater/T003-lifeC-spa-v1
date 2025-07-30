@@ -1,10 +1,11 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Rocket, Briefcase, Heart, BrainCircuit, UserCheck, Star } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const services = [
   {
     icon: <Rocket className="h-10 w-10 text-accent" />,
-    title: 'Personal Growth Coaching',
+    title: 'Personal Growth TEST Coaching',
     description: 'Unlock your potential, overcome limiting beliefs, and build a life filled with purpose and passion.'
   },
   {
@@ -39,10 +40,8 @@ export default function Services() {
     <section id="services" className="py-16 md:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">How I Can Help You</h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            I offer a range of coaching services tailored to your unique needs and goals.
-          </p>
+          <Badge variant="outline" className="mb-4">What We Do</Badge>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">How I Can TEST Help You</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
