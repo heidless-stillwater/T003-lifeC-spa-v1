@@ -31,7 +31,7 @@ const services = [
   {
     icon: <Star className="h-10 w-10 text-accent" />,
     title: 'Performance Coaching',
-    description: 'Optimize your performance in any area of life, from sports to business, with proven strategies.'
+    description: 'Optimize your TEST performance in any area of life, from sports to business, with proven strategies.'
   }
 ];
 
