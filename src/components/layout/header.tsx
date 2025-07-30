@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { HeartHandshake, Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -37,9 +38,11 @@ export default function Header() {
           <Button asChild>
             <Link href="#contact">Start Here</Link>
           </Button>
+          <ThemeToggle />
         </div>
         
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+           <ThemeToggle />
            <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
