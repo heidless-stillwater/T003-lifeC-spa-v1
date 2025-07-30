@@ -31,24 +31,12 @@ const THEMES = [
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
-  const [currentPalette, setCurrentPalette] = React.useState("custom-theme-0")
 
   React.useEffect(() => {
     setMounted(true)
-    const storedPalette = localStorage.getItem("ui-theme") ?? "custom-theme-0";
-    setCurrentPalette(storedPalette)
-    document.documentElement.setAttribute('data-theme', storedPalette)
   }, [])
-
-  const handlePaletteChange = (paletteName: string) => {
-    setCurrentPalette(paletteName)
-    document.documentElement.setAttribute('data-theme', paletteName)
-    localStorage.setItem("ui-theme", paletteName)
-  }
-
-  const toggleDarkMode = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }
+  
+  const currentPalette = THEMES.find(t => t.name === theme) ?? THEMES[0];
 
   if (!mounted) {
     return (
@@ -72,14 +60,14 @@ export function ThemeToggle() {
           <Switch
             id="dark-mode-toggle"
             checked={resolvedTheme === "dark"}
-            onCheckedChange={toggleDarkMode}
+            onCheckedChange={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             aria-label="Toggle light and dark mode"
           />
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <span>Custom</span>
+            <span>Test 0</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
@@ -87,7 +75,7 @@ export function ThemeToggle() {
                 {THEMES.map((p) => (
                   <DropdownMenuItem
                     key={p.name}
-                    onClick={() => handlePaletteChange(p.name)}
+                    onClick={() => document.documentElement.setAttribute('data-theme', p.name)}
                   >
                     <div className="flex items-center gap-2">
                        <div
@@ -96,7 +84,7 @@ export function ThemeToggle() {
                       />
                       <span>{p.label}</span>
                     </div>
-                    {currentPalette === p.name && <Check className="ml-auto h-4 w-4" />}
+                    {currentPalette.name === p.name && <Check className="ml-auto h-4 w-4" />}
                   </DropdownMenuItem>
                 ))}
               </ScrollArea>
