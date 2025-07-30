@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Palette, Check } from "lucide-react"
+import { Palette, Check, Monitor, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
@@ -26,35 +26,19 @@ const THEMES = [
 ];
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
+  const { theme, setTheme, resolvedTheme, themes } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
-    const savedMode = localStorage.getItem("dark-mode")
-    const darkMode = savedMode === "true";
-    setIsDarkMode(darkMode)
-    if (darkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
   }, [])
-  
+
+  const isDarkMode = resolvedTheme === 'dark';
+
   const toggleDarkMode = () => {
-    const newMode = !isDarkMode
-    setIsDarkMode(newMode)
-    localStorage.setItem("dark-mode", String(newMode))
-    if(newMode){
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
+    setTheme(isDarkMode ? 'light' : 'dark')
   };
-
-  const currentPalette = THEMES.find(t => t.name === theme) ?? THEMES[0];
-
+  
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
@@ -73,7 +57,10 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64">
         <div className="p-2 flex items-center justify-between">
-           <DropdownMenuLabel className="p-0">Light / Dark</DropdownMenuLabel>
+           <DropdownMenuLabel className="p-0 flex items-center gap-2">
+            {isDarkMode ? <Moon/> : <Sun/>}
+            <span>Light / Dark</span>
+            </DropdownMenuLabel>
           <Switch
             id="dark-mode-toggle"
             checked={isDarkMode}
@@ -106,6 +93,12 @@ export function ThemeToggle() {
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
+         <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          <Monitor className="mr-2 h-4 w-4" />
+          <span>System</span>
+           {theme === 'system' && <Check className="ml-auto h-4 w-4" />}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
