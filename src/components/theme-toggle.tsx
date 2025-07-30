@@ -20,12 +20,13 @@ import { Switch } from "@/components/ui/switch"
 import { usePalette } from "./palette-provider"
 
 const palettes = [
-  { name: "Default", key: "custom-theme-0", color: "hsl(207 90% 54%)" },
-  { name: "Violet", key: "custom-theme-1", color: "hsl(252 80% 70%)" },
+  { name: "Default", key: "custom-theme-0", color: "hsl(204 70% 53%)" },
+  { name: "Violet", key: "custom-theme-1", color: "hsl(257 69% 65%)" },
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
   { name: "Vibrant Red", key: "custom-theme-3", color: "hsl(0 100% 71%)" },
-  { name: "Cool Slate", key: "custom-theme-4", color: "hsl(249 81% 67%)" },
+  { name: "Cool Slate", key: "custom-theme-4", color: "hsl(251 81% 67%)" },
   { name: "Sky Blue", key: "custom-theme-5", color: "hsl(197 71% 73%)" },
+  { name: "Cyberpunk", key: "custom-theme-6", color: "hsl(330 100% 50%)" },
 ];
 
 export function ThemeToggle() {
