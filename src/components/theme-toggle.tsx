@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 import { Switch } from "@/components/ui/switch"
+import { usePalette } from "./palette-provider"
 
 const palettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(207 90% 54%)" },
@@ -25,33 +26,14 @@ const palettes = [
 ];
 
 export function ThemeToggle() {
-  const { setTheme, resolvedTheme, theme } = useTheme()
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const { palette, setPalette } = usePalette();
 
-  React.useEffect(() => {
-    // Determine if the OS is in dark mode
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDarkMode(mediaQuery.matches);
+  const isDarkMode = resolvedTheme === 'dark';
 
-    const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-
-  React.useEffect(() => {
-    // Apply or remove the 'dark' class based on the isDarkMode state
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = (checked: boolean) => {
-    setIsDarkMode(checked);
+  const toggleDarkMode = () => {
+    setTheme(isDarkMode ? 'light' : 'dark');
   };
-
-  const currentPalette = palettes.find(p => p.key === theme)?.key || 'custom-theme-0';
 
   return (
     <DropdownMenu>
@@ -80,7 +62,7 @@ export function ThemeToggle() {
             <DropdownMenuSubContent>
                <div className="max-h-60 overflow-y-auto">
                 {palettes.map((p) => (
-                  <DropdownMenuItem key={p.key} onClick={() => setTheme(p.key)}>
+                  <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
                     <div className="flex items-center gap-2">
                        <div
                         className="w-4 h-4 rounded-full"
@@ -88,7 +70,7 @@ export function ThemeToggle() {
                       />
                       <span>{p.name}</span>
                     </div>
-                    {currentPalette === p.key && <Check className="ml-auto h-4 w-4" />}
+                    {palette === p.key && <Check className="ml-auto h-4 w-4" />}
                   </DropdownMenuItem>
                 ))}
               </div>
