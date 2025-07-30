@@ -29,24 +29,23 @@ export default function Footer() {
           <div>
             <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+              <a href="https://this_site.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
                 <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+              <a href="https://this_site.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+              <a href="https://this_site.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
                 <Github className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </a>
             </div>
              <div className="mt-4 text-muted-foreground">
-                <p>123 Coaching Lane,</p>
-                <p>Success City, 12345</p>
-                <p>contact@bestday.dev</p>
-                <p>(123) 456-7890</p>
+                <p>Woodberry Down, London N4 2TG</p>
+                <p>jon@test.com</p>
+                <p>8888 567 890</p>
              </div>
           </div>
         </div>

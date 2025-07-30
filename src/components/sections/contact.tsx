@@ -22,7 +22,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Our Location</h3>
-                <p className="text-muted-foreground">123 Coaching Lane, Success City, 12345</p>
+                <p className="text-muted-foreground">Woodberry Down, London N4 2TG</p>
                 <a href="#" className="text-sm text-accent hover:underline">Get Directions</a>
               </div>
             </div>
@@ -32,7 +32,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Email Us</h3>
-                <p className="text-muted-foreground">contact@bestday.dev</p>
+                <p className="text-muted-foreground">jon@test.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -41,7 +41,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Call Us</h3>
-                <p className="text-muted-foreground">(123) 456-7890</p>
+                <p className="text-muted-foreground">8888 567 890</p>
               </div>
             </div>
           </div>

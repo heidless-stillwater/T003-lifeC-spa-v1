@@ -18,24 +18,24 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <HeartHandshake className="h-7 w-7 text-accent" />
-          <span className="font-headline text-xl font-bold text-foreground">Best Day Coaching</span>
+          <HeartHandshake className="h-[25px] w-[25px] text-accent" />
+          <span className="font-headline text-[23px] font-bold text-foreground">Best Day Coaching</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            <Link key={link.href} href={link.href} className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground">
               {link.label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="tel:+1234567890" className="flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <a href="tel:8888567890" className="flex items-center gap-2 text-lg font-medium text-muted-foreground transition-colors hover:text-foreground">
             <Phone className="h-4 w-4" />
-            (123) 456-7890
+            8888 567 890
           </a>
-          <Button asChild>
+          <Button asChild className="text-lg">
             <Link href="#contact">Start Here</Link>
           </Button>
           <ThemeToggle />
@@ -77,9 +77,9 @@ export default function Header() {
                       <Link href="#contact">Start Here</Link>
                     </Button>
                     <div className="flex items-center justify-between">
-                       <a href="tel:+1234567890" className="flex items-center justify-center gap-2 text-sm mt-4 font-medium text-muted-foreground transition-colors hover:text-foreground">
+                       <a href="tel:8888567890" className="flex items-center justify-center gap-2 text-sm mt-4 font-medium text-muted-foreground transition-colors hover:text-foreground">
                           <Phone className="h-4 w-4" />
-                          (123) 456-7890
+                          8888 567 890
                       </a>
                       <ThemeToggle />
                     </div>
