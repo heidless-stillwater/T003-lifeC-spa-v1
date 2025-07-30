@@ -26,6 +26,7 @@ const designerPalettes = [
   { name: "Modern Cyan", key: "custom-theme-10", color: "hsl(188 96% 43%)" },
   { name: "Monochromatic Blue", key: "custom-theme-11", color: "hsl(221 83% 53%)" },
   { name: "Deep Cyan & Emerald", key: "custom-theme-12", color: "hsl(191 91% 37%)" },
+  { name: "Deep Indigo & Yellow", key: "custom-theme-13", color: "hsl(243 55% 42%)" },
 ];
 
 const bespokePalettes = [

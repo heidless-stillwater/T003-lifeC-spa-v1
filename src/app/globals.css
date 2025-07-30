@@ -594,6 +594,50 @@ body {
     --input: 215 16% 20%;
     --ring: 191 91% 37%;
   }
+
+  html[data-palette='custom-theme-13'] {
+    --background: 60 8% 97%; /* #F5F5F4 */
+    --foreground: 0 0% 9%; /* #171717 */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 243 55% 42%; /* #3730A3 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 32%; /* #525252 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 32%;
+    --muted-foreground: 0 0% 9%;
+    --accent: 45 95% 47%; /* #EAB308 */
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 75% 42%; /* #B91C1C */
+    --destructive-foreground: 0 0% 100%;
+    --border: 60 4% 87%;
+    --input: 60 5% 92%;
+    --ring: 243 55% 42%;
+  }
+
+  .dark[data-palette='custom-theme-13'] {
+    --background: 0 0% 9%; /* #171717 */
+    --foreground: 60 8% 97%; /* #F5F5F4 */
+    --card: 0 0% 15%; /* Darker #171717 */
+    --card-foreground: 60 8% 97%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 60 8% 97%;
+    --primary: 243 55% 52%; /* Lighter #3730A3 */
+    --primary-foreground: 60 8% 97%;
+    --secondary: 0 0% 42%; /* Lighter #525252 */
+    --secondary-foreground: 60 8% 97%;
+    --muted: 0 0% 42%;
+    --muted-foreground: 60 8% 87%;
+    --accent: 45 95% 57%; /* Brighter #EAB308 */
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 75% 52%; /* Brighter #B91C1C */
+    --destructive-foreground: 60 8% 97%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 243 55% 52%;
+  }
 }
 
 @layer base {
