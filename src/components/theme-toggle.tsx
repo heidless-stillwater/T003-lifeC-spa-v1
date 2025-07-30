@@ -19,7 +19,7 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { usePalette } from "./palette-provider"
 
-const designerPalettes = [
+const customPalettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(221 83% 53%)" },
   { name: "Slate & Amber", key: "custom-theme-1", color: "hsl(220 25% 27%)" },
   { name: "Modern Cyan", key: "custom-theme-2", color: "hsl(188 96% 43%)" },
@@ -149,12 +149,12 @@ export function ThemeToggle() {
          <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Pipette className="mr-2 h-4 w-4" />
-            <span>Designer</span>
+            <span>Custom</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
                <div className="max-h-60 overflow-y-auto">
-                {designerPalettes.map((p) => (
+                {customPalettes.map((p) => (
                   <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
                     <div className="flex items-center gap-2">
                        <div
