@@ -8,19 +8,22 @@ import {
 } from "@/components/ui/carousel"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Star } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 
 const testimonials = [
   {
-    name: "Sarah L.",
-    title: "Marketing Director",
-    avatar: "SL",
-    image: "https://placehold.co/100x100.png",
-    text: "Working with Best Day Coaching was a game-changer for my career. I gained so much clarity and confidence, which led to a promotion within six months. Truly invaluable!",
+    name: "Alex Johnson",
+    title: "Software Engineer",
+    avatar: "AJ",
+    rating: 3,
+    image: "https://storage.googleapis.com/heidless_case_studies/c-life-coach/images-live/female-black-headshot-0.jpg",
+    text: "Working with CS Fitness has been a game-changer. The personalized plan was easy to follow and incredibly effective. I've never felt stronger or more confident!",
   },
   {
     name: "Michael B.",
     title: "Entrepreneur",
     avatar: "MB",
+    rating: 5,
     image: "https://placehold.co/100x100.png",
     text: "I was feeling stuck and unmotivated. The coaching sessions helped me redefine my goals and create an actionable plan. My business has never been better.",
   },
@@ -28,6 +31,7 @@ const testimonials = [
     name: "Jessica T.",
     title: "Freelance Writer",
     avatar: "JT",
+    rating: 5,
     image: "https://placehold.co/100x100.png",
     text: "The guidance I received helped me overcome my creative blocks and establish a work-life balance I thought was impossible. I'm happier and more productive than ever.",
   },
@@ -35,6 +39,7 @@ const testimonials = [
     name: "David C.",
     title: "Software Engineer",
     avatar: "DC",
+    rating: 5,
     image: "https://placehold.co/100x100.png",
     text: "I learned how to communicate more effectively and lead my team with empathy. The impact on my professional relationships has been profound.",
   },
@@ -45,7 +50,8 @@ export default function Testimonials() {
     <section id="testimonials" className="py-16 md:py-24 bg-card">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Success Stories</h2>
+           <Badge variant="outline" className="mb-4">Testimonials</Badge>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Success Stories from Our Clients</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             See what my clients are saying about their transformation journey.
           </p>
@@ -65,7 +71,7 @@ export default function Testimonials() {
                     <CardContent className="p-0 flex-1">
                       <div className="flex mb-4">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                          <Star key={i} className={`h-5 w-5 ${i < (testimonial.rating || 0) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
                         ))}
                       </div>
                       <p className="text-muted-foreground mb-6 italic">"{testimonial.text}"</p>
