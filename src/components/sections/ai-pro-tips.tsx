@@ -36,7 +36,7 @@ export default function AiProTips() {
           </p>
         </div>
         <div className="flex flex-col items-center gap-8">
-          <Button size="lg" onClick={handleGetTip} disabled={isLoading}>
+          <Button size="lg" onClick={handleGetTip} disabled={isLoading} className="text-[17px]">
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
