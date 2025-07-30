@@ -18,14 +18,11 @@ import {
   DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu"
 import { Switch } from "@/components/ui/switch"
-import { ScrollArea } from "./ui/scroll-area"
 
 const THEMES = [
-  { name: "custom-theme-0", label: "Default", color: "hsl(205 95% 72%)" },
-  { name: "custom-theme-1", label: "Warm Sunset", color: "hsl(35 95% 72%)" },
-  { name: "custom-theme-2", label: "Cool Lavender", color: "hsl(285 95% 72%)" },
-  { name: "custom-theme-3", label: "Minty Fresh", color: "hsl(155 95% 72%)" },
-  { name: "custom-theme-4", label: "Rose Quartz", color: "hsl(355 95% 72%)" },
+  { name: "custom-theme-0", label: "Default", color: "hsl(205 82% 51%)" },
+  { name: "custom-theme-1", label: "Violet", color: "hsl(251 79% 66%)" },
+  { name: "custom-theme-2", label: "Coral", color: "hsl(16 100% 66%)" },
 ];
 
 export function ThemeToggle() {
@@ -36,6 +33,19 @@ export function ThemeToggle() {
     setMounted(true)
   }, [])
   
+  const toggleDarkMode = () => {
+    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
+    // We update the class on html element to toggle dark mode
+    // And store the preference in local storage.
+    // The theme provider will pick this up on next load.
+    if(newTheme === 'dark'){
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', newTheme);
+  };
+
   const currentPalette = THEMES.find(t => t.name === theme) ?? THEMES[0];
 
   if (!mounted) {
@@ -59,23 +69,22 @@ export function ThemeToggle() {
            <DropdownMenuLabel className="p-0">Light / Dark</DropdownMenuLabel>
           <Switch
             id="dark-mode-toggle"
-            checked={resolvedTheme === "dark"}
-            onCheckedChange={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            checked={resolvedTheme === 'dark'}
+            onCheckedChange={toggleDarkMode}
             aria-label="Toggle light and dark mode"
           />
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <span>Test 0</span>
+            <span>Bespoke</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
-              <ScrollArea className={THEMES.length > 10 ? "h-96" : ""}>
                 {THEMES.map((p) => (
                   <DropdownMenuItem
                     key={p.name}
-                    onClick={() => document.documentElement.setAttribute('data-theme', p.name)}
+                    onClick={() => setTheme(p.name)}
                   >
                     <div className="flex items-center gap-2">
                        <div
@@ -84,10 +93,9 @@ export function ThemeToggle() {
                       />
                       <span>{p.label}</span>
                     </div>
-                    {currentPalette.name === p.name && <Check className="ml-auto h-4 w-4" />}
+                    {theme === p.name && <Check className="ml-auto h-4 w-4" />}
                   </DropdownMenuItem>
                 ))}
-              </ScrollArea>
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
