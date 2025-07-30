@@ -22,7 +22,8 @@ import { usePalette } from "./palette-provider"
 
 const designerPalettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(221 83% 53%)" },
-  { name: "Slate & Amber", key: "custom-theme-1", color: "hsl(222 25% 27%)" },
+  { name: "Slate & Amber", key: "custom-theme-1", color: "hsl(220 25% 27%)" },
+  { name: "Modern Cyan", key: "custom-theme-10", color: "hsl(188 96% 43%)" },
 ];
 
 const bespokePalettes = [
@@ -121,5 +122,3 @@ export function ThemeToggle() {
     </DropdownMenu>
   )
 }
-
-    
