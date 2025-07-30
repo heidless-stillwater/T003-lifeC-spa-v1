@@ -24,7 +24,7 @@ const bespokePalettes = [
   { name: "Default", theme: "custom-theme-0", color: "#73C2FB" },
 ];
 
-const customPalettes = [
+const daisyUiPalettes = [
   { name: "Forest", theme: "forest", color: "#17A34A" },
   { name: "Cyberpunk", theme: "cyberpunk", color: "#FF7598" },
   { name: "Cupcake", theme: "cupcake", color: "#65C3C8" },
@@ -62,36 +62,6 @@ export function ThemeToggle() {
     setMounted(true)
   }, [])
 
-  const toggleDarkMode = () => {
-    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
-    document.documentElement.classList.remove(resolvedTheme === "dark" ? "dark" : "light");
-    document.documentElement.classList.add(newTheme);
-    setTheme(newTheme === "dark" ? customPalettes.find(p => p.theme === theme)?.theme || bespokePalettes.find(p => p.theme === theme)?.theme || 'custom-theme-0' : theme);
-     // Manually set the theme for next-themes to keep track
-    const currentPalette = theme?.replace('-dark', '') || 'custom-theme-0';
-    if (newTheme === 'dark') {
-       setTheme(`${currentPalette}-dark`);
-    } else {
-       setTheme(currentPalette);
-    }
-    // A bit of a hack, we need to force next-themes to re-evaluate
-    const current = document.documentElement.getAttribute('data-theme') ?? 'custom-theme-0';
-    if(newTheme === 'dark'){
-      document.documentElement.classList.add('dark');
-      setTheme(current);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setTheme(current);
-    }
-  }
-
-  const handleSetTheme = (newTheme: string) => {
-    if (resolvedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-    setTheme(newTheme);
-  }
-
   if (!mounted) {
     return (
        <Button variant="ghost" size="icon" disabled>
@@ -110,7 +80,7 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-60">
+      <DropdownMenuContent align="end" className="w-60" data-theme={theme}>
         <div className="flex items-center justify-between px-2 py-1.5">
           <Label htmlFor="dark-mode-toggle" className="flex items-center gap-2 text-sm font-normal">
             { isDarkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" /> }
@@ -132,9 +102,9 @@ export function ThemeToggle() {
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
-              <ScrollArea className={bespokePalettes.length > 5 ? "h-48" : ""}>
+              <ScrollArea className={bespokePalettes.length > 10 ? "h-72" : ""}>
                 {bespokePalettes.map((palette) => (
-                  <DropdownMenuItem key={palette.name} onClick={() => handleSetTheme(palette.theme)}>
+                  <DropdownMenuItem key={palette.name} onClick={() => setTheme(palette.theme)}>
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 rounded-full" style={{ backgroundColor: palette.color }} />
                       <span>{palette.name}</span>
@@ -149,13 +119,13 @@ export function ThemeToggle() {
 
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <span>Custom</span>
+            <span>DaisyUI</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
-               <ScrollArea className={customPalettes.length > 5 ? "h-48" : ""}>
-                {customPalettes.map((palette) => (
-                  <DropdownMenuItem key={palette.name} onClick={() => handleSetTheme(palette.theme)}>
+               <ScrollArea className={daisyUiPalettes.length > 10 ? "h-72" : ""}>
+                {daisyUiPalettes.map((palette) => (
+                  <DropdownMenuItem key={palette.name} onClick={() => setTheme(palette.theme)}>
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 rounded-full" style={{ backgroundColor: palette.color }} />
                       <span>{palette.name}</span>
