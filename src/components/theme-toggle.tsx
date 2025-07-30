@@ -21,7 +21,7 @@ import { usePalette } from "./palette-provider"
 
 const palettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(221 83% 53%)" },
-  { name: "Violet", key: "custom-theme-1", color: "hsl(257 69% 65%)" },
+  { name: "Slate & Amber", key: "custom-theme-1", color: "hsl(215 25% 27%)" },
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
   { name: "Vibrant Red", key: "custom-theme-3", color: "hsl(0 100% 71%)" },
   { name: "Cool Slate", key: "custom-theme-4", color: "hsl(251 81% 67%)" },
@@ -88,5 +88,3 @@ export function ThemeToggle() {
     </DropdownMenu>
   )
 }
-
-    
