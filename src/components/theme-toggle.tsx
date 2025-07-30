@@ -26,7 +26,7 @@ const THEMES = [
 ];
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme, themes } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
@@ -99,9 +99,11 @@ export function ThemeToggle() {
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="mr-2 h-4 w-4" />
           <span>System</span>
-           {currentPalette === 'system' && <Check className="ml-auto h-4 w-4" />}
+           {theme === 'system' && <Check className="ml-auto h-4 w-4" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
 }
+
+    
