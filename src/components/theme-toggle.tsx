@@ -25,6 +25,7 @@ const palettes = [
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
   { name: "Vibrant Red", key: "custom-theme-3", color: "hsl(0 100% 71%)" },
   { name: "Cool Slate", key: "custom-theme-4", color: "hsl(249 81% 67%)" },
+  { name: "Sky Blue", key: "custom-theme-5", color: "hsl(197 71% 73%)" },
 ];
 
 export function ThemeToggle() {
