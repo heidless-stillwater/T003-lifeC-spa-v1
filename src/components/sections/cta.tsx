@@ -11,7 +11,7 @@ export default function Cta() {
             Don't wait another day to start your journey towards a more fulfilling and successful life. A complimentary consultation is the first step.
           </p>
           <Button size="lg" variant="outline" className="bg-accent text-accent-foreground hover:bg-accent-foreground hover:text-accent border-accent-foreground/50 hover:border-accent-foreground text-[17px]" asChild>
-            <Link href="#contact">Claim Your Free Session</Link>
+            <Link href="#contact">Claim Your Free TEST Session</Link>
           </Button>
         </div>
       </div>
