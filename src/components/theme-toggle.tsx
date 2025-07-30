@@ -35,7 +35,7 @@ const bespokePalettes = [
   { name: "Cyberpunk", key: "custom-theme-9", color: "hsl(330 100% 50%)" },
   { name: "Strong Blue", key: "custom-theme-10", color: "hsl(211 78% 46%)" },
   { name: "Violet Kiss", key: "custom-theme-11", color: "hsl(271 76% 53%)" },
-  { name: "Vibrant Green", key: "custom-theme-12", color: "hsl(134 61% 40%)" },
+  { name: "Vibrant Green & Blue", key: "custom-theme-12", color: "hsl(134 61% 40%)" },
 ];
 
 const daisyPalettes = [
