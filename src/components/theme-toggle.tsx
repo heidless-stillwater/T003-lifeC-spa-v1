@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Moon, Sun, Palette, Check } from "lucide-react"
 import { useTheme } from "next-themes"
-import { usePalette } from "@/components/palette-provider";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -20,23 +19,39 @@ import {
 import { Switch } from "@/components/ui/switch"
 
 const palettes = [
-  { name: "Default", key: "custom-theme-0", color: "hsl(210 90% 50%)" },
-  { name: "Violet", key: "custom-theme-1", color: "hsl(246 72% 69%)" },
+  { name: "Default", key: "custom-theme-0", color: "hsl(207 90% 54%)" },
+  { name: "Violet", key: "custom-theme-1", color: "hsl(252 80% 70%)" },
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
 ];
 
 export function ThemeToggle() {
-  const { setTheme, resolvedTheme } = useTheme()
-  const { palette, setPalette } = usePalette();
+  const { setTheme, resolvedTheme, theme } = useTheme()
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   React.useEffect(() => {
-    setIsDarkMode(resolvedTheme === 'dark');
-  }, [resolvedTheme]);
+    // Determine if the OS is in dark mode
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  React.useEffect(() => {
+    // Apply or remove the 'dark' class based on the isDarkMode state
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   const toggleDarkMode = (checked: boolean) => {
-    setTheme(checked ? 'dark' : 'light');
+    setIsDarkMode(checked);
   };
+
+  const currentPalette = palettes.find(p => p.key === theme)?.key || 'custom-theme-0';
 
   return (
     <DropdownMenu>
@@ -65,7 +80,7 @@ export function ThemeToggle() {
             <DropdownMenuSubContent>
                <div className="max-h-60 overflow-y-auto">
                 {palettes.map((p) => (
-                  <DropdownMenuItem key={p.key} onClick={() => setPalette(p.key)}>
+                  <DropdownMenuItem key={p.key} onClick={() => setTheme(p.key)}>
                     <div className="flex items-center gap-2">
                        <div
                         className="w-4 h-4 rounded-full"
@@ -73,7 +88,7 @@ export function ThemeToggle() {
                       />
                       <span>{p.name}</span>
                     </div>
-                    {palette === p.key && <Check className="ml-auto h-4 w-4" />}
+                    {currentPalette === p.key && <Check className="ml-auto h-4 w-4" />}
                   </DropdownMenuItem>
                 ))}
               </div>

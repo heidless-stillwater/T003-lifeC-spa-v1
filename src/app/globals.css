@@ -12,7 +12,7 @@ body {
 
 @layer base {
   :root,
-  [data-palette='custom-theme-0'] {
+  [data-theme='custom-theme-0'] {
     --background: 240 10% 98%;
     --foreground: 222 84% 5%;
     --card: 0 0% 100%;
@@ -40,8 +40,7 @@ body {
     --chart-5: 27 87% 67%;
   }
 
-  .dark:root,
-  .dark [data-palette='custom-theme-0'] {
+  .dark[data-theme='custom-theme-0'] {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
     --card: 222 47% 11%;
@@ -68,7 +67,7 @@ body {
     --chart-5: 340 75% 55%;
   }
 
-  [data-palette='custom-theme-1'] {
+  [data-theme='custom-theme-1'] {
     --background: 236 33% 15%;
     --foreground: 240 50% 90%;
     --card: 235 24% 21%;
@@ -90,7 +89,7 @@ body {
     --ring: 252 80% 70%;
   }
 
-  .dark [data-palette='custom-theme-1'] {
+  .dark[data-theme='custom-theme-1'] {
     --background: 236 33% 15%;
     --foreground: 240 50% 90%;
     --card: 235 24% 21%;
@@ -112,7 +111,7 @@ body {
     --ring: 252 80% 70%;
   }
 
-  [data-palette='custom-theme-2'] {
+  [data-theme='custom-theme-2'] {
     --background: 24 67% 95%;
     --foreground: 30 29% 23%;
     --card: 0 0% 100%;
@@ -134,7 +133,7 @@ body {
     --ring: 16 100% 66%;
   }
 
-  .dark [data-palette='custom-theme-2'] {
+  .dark[data-theme='custom-theme-2'] {
     --background: 24 67% 95%;
     --foreground: 30 29% 23%;
     --card: 0 0% 100%;
