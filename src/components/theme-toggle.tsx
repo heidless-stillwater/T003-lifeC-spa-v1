@@ -46,7 +46,7 @@ export function ThemeToggle() {
   const toggleDarkMode = () => {
     setTheme(isDarkMode ? 'light' : 'dark')
   };
-
+  
   const currentPalette = THEMES.find(t => t.name === theme)?.name || 'system';
 
   return (
