@@ -23,6 +23,7 @@ const palettes = [
   { name: "Default", key: "custom-theme-0", color: "hsl(207 90% 54%)" },
   { name: "Violet", key: "custom-theme-1", color: "hsl(252 80% 70%)" },
   { name: "Coral", key: "custom-theme-2", color: "hsl(16 100% 66%)" },
+  { name: "Vibrant Red", key: "custom-theme-3", color: "hsl(0 100% 71%)" },
 ];
 
 export function ThemeToggle() {
