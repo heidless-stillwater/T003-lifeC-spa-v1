@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
           <ThemeProvider
             attribute="data-theme"
-            defaultTheme="system"
+            defaultTheme="custom-theme-0"
             enableSystem
             disableTransitionOnChange
           >
