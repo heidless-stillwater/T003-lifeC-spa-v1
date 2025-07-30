@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Palette, Check, Monitor, Sun, Moon } from "lucide-react"
+import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
@@ -9,105 +9,30 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu"
-import { Switch } from "@/components/ui/switch"
-
-const THEMES = [
-  { name: "custom-theme-0", label: "Default", color: "hsl(206 85% 55%)" },
-  { name: "custom-theme-1", label: "Violet", color: "hsl(251 79% 66%)" },
-  { name: "custom-theme-2", label: "Coral", color: "hsl(16 100% 66%)" },
-];
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-    const currentTheme = document.documentElement.dataset.theme;
-    if (!THEMES.some(t => t.name === currentTheme)) {
-        document.documentElement.dataset.theme = "custom-theme-0";
-    }
-  }, [])
-
-  if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon" disabled>
-        <Palette className="h-5 w-5" />
-      </Button>
-    )
-  }
-
-  const isDarkMode = resolvedTheme === 'dark';
-
-  const toggleDarkMode = () => {
-    setTheme(isDarkMode ? 'light' : 'dark')
-  };
-
-  const handleThemeChange = (newTheme: string) => {
-    document.documentElement.dataset.theme = newTheme;
-  }
-  
-  const currentPalette = typeof window !== 'undefined' ? document.documentElement.dataset.theme : 'custom-theme-0';
+  const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Palette className="h-5 w-5" />
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-64">
-        <div className="p-2 flex items-center justify-between">
-           <DropdownMenuLabel className="p-0 flex items-center gap-2">
-            {isDarkMode ? <Moon/> : <Sun/>}
-            <span>Light / Dark</span>
-            </DropdownMenuLabel>
-          <Switch
-            id="dark-mode-toggle"
-            checked={isDarkMode}
-            onCheckedChange={toggleDarkMode}
-            aria-label="Toggle light and dark mode"
-          />
-        </div>
-        <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <span>Bespoke</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent>
-                {THEMES.map((p) => (
-                  <DropdownMenuItem
-                    key={p.name}
-                    onClick={() => handleThemeChange(p.name)}
-                  >
-                    <div className="flex items-center gap-2">
-                       <div
-                        className="w-4 h-4 rounded-full"
-                        style={{ backgroundColor: p.color }}
-                      />
-                      <span>{p.label}</span>
-                    </div>
-                    {currentPalette === p.name && <Check className="ml-auto h-4 w-4" />}
-                  </DropdownMenuItem>
-                ))}
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-         <DropdownMenuSeparator />
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Monitor className="mr-2 h-4 w-4" />
-          <span>System</span>
-           {theme === 'system' && !THEMES.some(t => t.name === theme) && <Check className="ml-auto h-4 w-4" />}
+          System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
