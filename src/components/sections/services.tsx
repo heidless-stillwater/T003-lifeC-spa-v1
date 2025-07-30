@@ -16,7 +16,7 @@ const services = [
   {
     icon: <Heart className="h-10 w-10 text-accent" />,
     title: 'Relationship Coaching',
-    description: 'Improve communication and build stronger, more fulfilling connections with others.'
+    description: 'Improve TEST communication and build stronger, more fulfilling connections with others.'
   },
   {
     icon: <BrainCircuit className="h-10 w-10 text-accent" />,
