@@ -207,3 +207,5 @@ h6 {
 .dark.set-1-palette-8 { --background: 240 14% 15%; --foreground: 220 100% 96%; --card: 240 11% 20%; --card-foreground: 220 100% 96%; --popover: 240 11% 20%; --popover-foreground: 220 100% 96%; --primary: 271 76% 53%; --primary-foreground: 220 100% 96%; --secondary: 240 4% 68%; --secondary-foreground: 220 100% 96%; --muted: 240 4% 68%; --muted-foreground: 240 4% 48%; --accent: 180 100% 50%; --accent-foreground: 240 14% 15%; --destructive: 11 100% 62%; --destructive-foreground: 220 100% 96%; --border: 240 4% 68%; --input: 240 4% 68%; --ring: 271 76% 53%; }
 .dark.set-1-palette-9 { --background: 210 10% 15%; --foreground: 120 100% 98%; --card: 210 10% 20%; --card-foreground: 120 100% 98%; --popover: 210 10% 20%; --popover-foreground: 120 100% 98%; --primary: 134 61% 50%; --primary-foreground: 0 0% 100%; --secondary: 208 7% 35%; --secondary-foreground: 0 0% 100%; --muted: 208 7% 35%; --muted-foreground: 208 7% 60%; --accent: 211 100% 60%; --accent-foreground: 0 0% 100%; --destructive: 354 70% 64%; --destructive-foreground: 0 0% 100%; --border: 208 7% 35%; --input: 208 7% 35%; --ring: 134 61% 50%; }
 }
+
+    
