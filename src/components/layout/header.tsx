@@ -1,9 +1,11 @@
+
 "use client";
 
 import Link from 'next/link';
 import { HeartHandshake, Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { ThemeSwitcher } from '@/components/theme-switcher';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -37,9 +39,11 @@ export default function Header() {
           <Button asChild className="text-lg">
             <Link href="#contact">Start Here</Link>
           </Button>
+          <ThemeSwitcher />
         </div>
         
         <div className="md:hidden flex items-center gap-2">
+           <ThemeSwitcher />
            <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
