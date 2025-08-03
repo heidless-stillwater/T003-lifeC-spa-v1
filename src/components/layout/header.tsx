@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { HeartHandshake, Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -38,7 +37,6 @@ export default function Header() {
           <Button asChild className="text-lg">
             <Link href="#contact">Start Here</Link>
           </Button>
-          <ThemeToggle />
         </div>
         
         <div className="md:hidden flex items-center gap-2">
@@ -81,7 +79,6 @@ export default function Header() {
                           <Phone className="h-4 w-4" />
                           8888 567 890
                       </a>
-                      <ThemeToggle />
                     </div>
                 </div>
               </div>
